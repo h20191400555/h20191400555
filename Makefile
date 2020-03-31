@@ -1,7 +1,8 @@
-obj-m := usbmod.o
+obj-m := main.o
 
-KERNEL_DIR = /lib/modules/$(shell uname -r)/build
-PWD = $(shell pwd)
 all:
-	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) modules
+	make -C /lib/modules/$(shell uname -r)/build
+M=$(shell pwd) modules
 
+clean:
+	rm -rf*.o*.mod.c*.symvers*.order
